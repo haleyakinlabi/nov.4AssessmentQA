@@ -23,6 +23,16 @@ rollbar.log('Hello World!')
 
 app.use(express.json())
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'))
+})
+app.get('/styles', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.css'))
+})
+app.get('/js', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.js'))
+})
+
 app.get('/api/robots', (req, res) => {
     try {
         res.status(200).send(botsArr)
